@@ -1,0 +1,41 @@
+{
+  "name": "this",
+  "description": "An extremely simple OO JavaScript library.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/rickyclegg/this",
+  "author": {
+    "name": "Ricky Clegg",
+    "email": "me@rickyclegg.com",
+    "url": "http://rickyclegg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rickyclegg/this.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rickyclegg/this/issues"
+  },
+  "licenses": [
+    {
+      "type": "APACHE",
+      "url": "https://github.com/rickyclegg/this/issues/blob/master/LICENSE-APACHE"
+    }
+  ],
+  "main": "grunt.js",
+  "bin": "bin/this",
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17",
+    "grunt-html": "~0.3.1"
+  },
+  "keywords": [
+    "this",
+    "oo",
+    "tdd",
+    "agile",
+    "object orientated",
+    "javascript"
+  ]
+}
