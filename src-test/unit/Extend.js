@@ -1,7 +1,9 @@
 describe("Extend", function () {
 
     it("Extend is defined", function () {
-        expect({}).toBeDefined();
+        var num = 10;
+
+        expect(null).toBeDefined();
     });
 
 });

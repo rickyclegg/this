@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: 'src/Extend.js',
-                tasks: ['concat lint jstestdriver:run_tests'],
+                tasks: ['concat', 'lint', 'jstestdriver:run_tests'],
                 options: {
                     interrupt: true
                 }
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
         },
         shell: {
             git_commit: {
-                command: "git commit -a -m 'First grunt commit'",
+                command: "git commit -a -m 'Test Grunt commit'",
                 stdout: true,
                 failOnError: true
             }
