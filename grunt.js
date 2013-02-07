@@ -61,10 +61,15 @@ module.exports = function (grunt) {
             codegen: {quote_keys: true}
         },
         jstestdriver: {
-            browser: "/Applications/Firefox.app/Contents/MacOS/firefox",
-            config: "src-test/unit/jsTestDriver.conf",
-            port: "9876",
-            tests: "all"
+            start_and_run: {
+                browser: "/Applications/Firefox.app/Cotents/MacOS/firefox"
+            },
+            run_tests: {},
+            options: {
+                port: "9876",
+                config: ["src-test/unit/jsTestDriver_unit.conf"],
+                tests: "all"
+            }
         },
         shell: {
             git_commit: {
@@ -78,6 +83,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-jstestdriver');
 
-    grunt.registerTask('default', 'concat lint min jstestdriver');
-
+    grunt.registerTask('default', 'lint concat:debug jstestdriver:run_tests shell:git_commit');
 };
