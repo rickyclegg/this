@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: 'src/Extend.js',
-                tasks: ['concat lint'],
+                tasks: ['concat lint jstestdriver:run_tests'],
                 options: {
                     interrupt: true
                 }
