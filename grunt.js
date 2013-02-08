@@ -3,8 +3,8 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         watch: {
             scripts: {
-                files: 'src/Extend.js',
-                tasks: ['concat', 'lint', 'jstestdriver:run_tests'],
+                files: ['src/**/*.js', 'src-test/**/*.js'],
+                tasks: ['concat:debug', 'lint', 'jstestdriver:run_tests'],
                 options: {
                     interrupt: true
                 }
@@ -45,13 +45,13 @@ module.exports = function (grunt) {
         },
         concat: {
             debug: {
-                src: ['src/Extend.js'],
+                src: ['<banner>', 'src/function/*.js'],
                 dest: 'build/debug/<%= pkg.name %>_debug_<%= pkg.version %>.js'
             }
         },
         min: {
             production: {
-                src: ['build/debug/<%= pkg.name %>_debug_<%= pkg.version %>.js'],
+                src: ['<banner>', 'build/debug/<%= pkg.name %>_debug_<%= pkg.version %>.js'],
                 dest: 'build/production/<%= pkg.name %>_<%= pkg.version %>.js'
             }
         },
@@ -83,5 +83,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-jstestdriver');
 
-    grunt.registerTask('default', 'lint concat:debug jstestdriver:run_tests shell:git_commit');
+    grunt.registerTask('default', 'lint jstestdriver:run_tests concat:debug min:production');
 };
