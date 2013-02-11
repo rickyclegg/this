@@ -83,5 +83,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-jstestdriver');
 
-    grunt.registerTask('default', 'lint jstestdriver:run_tests concat:debug min:production');
+    grunt.registerTask('default', 'concat:debug lint jstestdriver:run_tests min:production');
 };
