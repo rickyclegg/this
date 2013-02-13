@@ -4,14 +4,15 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: ['src/**/*.js', 'src-test/**/*.js'],
-                tasks: ['concat:debug', 'lint'],
+                tasks: ['lint:beforeconcat'],
                 options: {
                     interrupt: true
                 }
             }
         },
         lint: {
-            files: ['build/debug/<%= pkg.name %>_debug_<%= pkg.version %>.js']
+            beforeconcat: ['src/**/*.js'],
+            afterconcat: ['build/debug/<%= pkg.name %>_<%= pkg.version %>.js']
         },
         jshint: {
             options: {
@@ -24,7 +25,7 @@ module.exports = function (grunt) {
                 newcap: true,
                 noempty: true,
                 plusplus: true,
-                quotmark: "double",
+                quotmark: "single",
                 undef: true,
                 unused: false,
                 strict: false,
@@ -37,10 +38,11 @@ module.exports = function (grunt) {
                 evil: true,
                 regexdash: true
             },
-            files: ['build/debug/<%= pkg.name %>_debug_<%= pkg.version %>.js']
+            files: ['src/**/*.js']
         },
         meta: {
             banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+                '<%= pkg.description %> - ' +
                 '<%= grunt.template.today("yyyy-mm-dd") %> */'
         },
         concat: {
@@ -71,6 +73,12 @@ module.exports = function (grunt) {
                 tests: "all"
             }
         },
+        jsdoc : {
+            dist : {
+                src: ['src/**/*.js'],
+                dest: 'docs'
+            }
+        },
         shell: {
             git_commit: {
                 command: "git commit -a -m 'Test Grunt commit'",
@@ -82,6 +90,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-jstestdriver');
+    grunt.loadNpmTasks('grunt-jsdoc-plugin');
 
-    grunt.registerTask('default', 'concat:debug lint jstestdriver:run_tests min:production');
+    grunt.registerTask('default', 'lint:beforeconcat concat:debug lint:afterconcat jstestdriver:run_tests min:production');
 };

@@ -1,4 +1,4 @@
-/*! this - v0.0.1 - 2013-02-12 */
+/*! this - v0.0.1 - 2013-02-13 */
 
 (function () {
     if (!Function.prototype.extend) {
@@ -12,7 +12,7 @@
          * AdvancedClass.extend(BaseClass);
          */
         Function.prototype.extend = function (SuperClass) {
-            if (typeof SuperClass.constructor === "function") {
+            if (typeof SuperClass.constructor === 'function') {
                 this.prototype = new SuperClass();
                 this.prototype.constructor = this;
             } else {
@@ -22,31 +22,6 @@
 
             return this;
         };
-    }
-
-    if (!Function.prototype.curry) {
-        (function () {
-            var slice = Array.prototype.slice;
-
-            /**
-             * Passes scoped variables through a function.
-             * @memberOf Function.prototype
-             */
-            Function.prototype.curry = function () {
-                var target = this,
-                    args = slice.call(arguments);
-
-                return function () {
-                    var allArgs = args;
-
-                    if (arguments.length > 0) {
-                        allArgs = args.concat(slice.call(arguments));
-                    }
-
-                    return target.apply(this, allArgs);
-                };
-            };
-        }());
     }
 
     if (!Function.prototype.bind) {
@@ -101,14 +76,14 @@
          */
         Function.prototype.memoize = function () {
             var cache = {},
-                func = this,
+                originalFunction = this,
                 join = Array.prototype.join;
 
             return function () {
                 var key = join.call(arguments);
 
                 if (!cache[key]) {
-                    cache[key] = func.apply(this, arguments);
+                    cache[key] = originalFunction.apply(this, arguments);
                 }
 
                 return cache[key];
