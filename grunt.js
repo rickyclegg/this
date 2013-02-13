@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: ['src/**/*.js', 'src-test/**/*.js'],
-                tasks: ['concat:debug', 'lint', 'jstestdriver:run_tests'],
+                tasks: ['concat:debug', 'lint'],
                 options: {
                     interrupt: true
                 }

@@ -1,4 +1,4 @@
-/*! this - v0.0.1 - 2013-02-10 */
+/*! this - v0.0.1 - 2013-02-12 */
 
 (function () {
     if (!Function.prototype.extend) {
@@ -44,6 +44,51 @@
                     }
 
                     return target.apply(this, allArgs);
+                };
+            };
+        }());
+    }
+
+    if (!Function.prototype.bind) {
+        (function () {
+            var slice = Array.prototype.slice;
+
+            /**
+             * Changes the scope of the function everytime it is called.
+             * @memberOf Function.prototype
+             * @param scope
+             * @example function myClickHandler(event)
+             * {
+             *     alert(this);
+             * }
+             *
+             * var myElement = document.getElementById('myElement');
+             * myElement.onClick = myClickHandler.bind(this);
+             */
+            Function.prototype.bind = function (scope) {
+                var _this = this,
+                    args;
+
+                if (arguments.length > 1) {
+                    args = slice.call(arguments, 1);
+
+                    return function () {
+                        var allArgs = args;
+
+                        if (arguments.length > 0) {
+                            allArgs = args.concat(slice.call(arguments));
+                        }
+
+                        return _this.apply(scope, allArgs);
+                    };
+                }
+
+                return function () {
+                    if (arguments.length > 0) {
+                        return _this.apply(scope, arguments);
+                    }
+
+                    return _this.call(scope);
                 };
             };
         }());
