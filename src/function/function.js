@@ -28,6 +28,7 @@
              * Changes the scope of the function every time it is called.
              * @memberOf Function.prototype
              * @param scope
+             * @returns {Function} A new copy of the function bound to a scope.
              * @example function myClickHandler(event)
              * {
              *     alert(this);
@@ -67,7 +68,7 @@
 
     /**
      * Remembers and caches the results of high process functions. And returns the result.
-     * @returns {Function} The new version of the Function object with memorizing capabilities.
+     * @returns {Function} The new version of the Function object with memoizing capabilities.
      * @memberOf Function.prototype
      * @example function addNumbersTogether() {
      *      var i,
@@ -81,7 +82,7 @@
      *      return result;
      * }
      *
-     * var memAddNumbersTogether = addNumberTogether.memorize();
+     * var memAddNumbersTogether = addNumberTogether.memoize();
      * memAddNumbersTogether(1, 2, 3, 4);
      */
     Function.prototype.memoize = function () {

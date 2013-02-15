@@ -3,7 +3,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         watch: {
             scripts: {
-                files: ['src/**/*.js', 'src-test/**/*.js'],
+                files: ['src/**/*.js', 'src-test/**/*.js', 'docs/this API.js'],
                 tasks: ['lint:beforeconcat'],
                 options: {
                     interrupt: true
@@ -42,8 +42,8 @@ module.exports = function (grunt) {
         },
         meta: {
             banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                '<%= pkg.description %> - ' +
-                '<%= grunt.template.today("yyyy-mm-dd") %> */'
+                '<%= grunt.template.today("yyyy-mm-dd") %> - ' +
+                'Author: <%= pkg.author.name %> || <%= pkg.author.email %> */'
         },
         concat: {
             debug: {
@@ -76,7 +76,13 @@ module.exports = function (grunt) {
         jsdoc : {
             dist : {
                 src: ['src/**/*.js'],
-                dest: 'docs'
+                dest: 'docs/jsDoc'
+            }
+        },
+        docco: {
+            debug: {
+                src: ['docs/API.js'],
+                dest: 'docs/docco/'
             }
         },
         shell: {
@@ -90,7 +96,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-jstestdriver');
-    grunt.loadNpmTasks('grunt-jsdoc-plugin');
+    grunt.loadNpmTasks('grunt-docco');
 
     grunt.registerTask('default', 'lint:beforeconcat concat:debug lint:afterconcat jstestdriver:run_tests min:production');
 };

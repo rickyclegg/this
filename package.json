@@ -1,7 +1,7 @@
 {
   "name": "this",
-  "description": "An extremely simple OO JavaScript library.",
-  "version": "0.0.1",
+  "description": "A tiny library for writing OO JavaScript. A JavaScript library that tries its best not to be a library. Rules are being broken but this just does not care. This adds functionality to globals already in JavaScript (Often frowned upon). But I'm all about not choosing a big library until the project needs it.",
+  "version": "0.1.1",
   "homepage": "https://github.com/rickyclegg/this",
   "author": {
     "name": "Ricky Clegg",

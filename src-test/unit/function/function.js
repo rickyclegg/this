@@ -22,13 +22,13 @@ describe("Function features", function () {
         });
 
         it("Extending a global class", function () {
-            var ricky = new Person();
+            var ricky = new window.Person();
 
             expect(ricky.getHeart).toBeDefined();
         });
 
         it("Extending a global class with prototypical functions", function () {
-            var ricky = new Person();
+            var ricky = new window.Person();
 
             expect(ricky.getLungs).toBeDefined();
         });
@@ -42,8 +42,8 @@ describe("Function features", function () {
 
             expect(superMan.getHeart).toBeDefined();
             expect(superMan.getLungs).toBeDefined();
-            expect(superMan instanceof LivingThing).toBeTruthy();
-            expect(superMan instanceof Person).toBeTruthy();
+            expect(superMan instanceof window.LivingThing).toBeTruthy();
+            expect(superMan instanceof window.Person).toBeTruthy();
         });
 
         it("Extended classes are instances of super", function () {
@@ -53,8 +53,8 @@ describe("Function features", function () {
 
             superMan = new SuperHero();
 
-            expect(superMan instanceof LivingThing).toBeTruthy();
-            expect(superMan instanceof Person).toBeTruthy();
+            expect(superMan instanceof window.LivingThing).toBeTruthy();
+            expect(superMan instanceof window.Person).toBeTruthy();
         });
 
         it("Overriding a function", function () {
@@ -84,6 +84,27 @@ describe("Function features", function () {
             expect(testCube.getArea()).toEqual(1000000);
         });
 
+        it("Extending a class written in a closure", function () {
+            var Greeter = (function () {
+                    function Greeter(message) {
+                        this.greeting = message;
+                    }
+
+                    Greeter.extend(window.Person);
+
+                    Greeter.prototype.greet = function () {
+                        return "Hello, " + this.greeting;
+                    };
+
+                    return Greeter;
+                }()),
+                helloPerson = new Greeter("Ricky");
+
+            expect(helloPerson.greet).toBeDefined();
+            expect(helloPerson.getHeart).toBeDefined();
+            expect(helloPerson instanceof window.Person).toBeTruthy();
+        });
+
     });
 
     describe("Scoping", function () {
@@ -107,9 +128,8 @@ describe("Function features", function () {
                     return num + 100;
                 },
                 addTwoNumbersTogether = function (num1, num2) {
-                    var bindedFunction = addAHundred.bind(this);
-
-                    var totalNum = num1 + num2;
+                    var bindedFunction = addAHundred.bind(this),
+                        totalNum = num1 + num2;
 
                     return bindedFunction(totalNum);
                 },
@@ -142,7 +162,7 @@ describe("Function features", function () {
         });
     });
 
-    describe("Remembering", function () {
+    describe("Performance", function () {
 
         var addNumbersTogetherFunctionRun = false;
 
@@ -167,38 +187,39 @@ describe("Function features", function () {
         }
 
         it("Remembering a call that has not been called before", function () {
-            var memorizedAddNumbersTogether = addNumbersTogether.memoize(),
+            var memoizedAddNumbersTogether = addNumbersTogether.memoize(),
                 result;
-            result = memorizedAddNumbersTogether(1, 2, 3, 4);
+
+            result = memoizedAddNumbersTogether(1, 2, 3, 4);
 
             expect(addNumbersTogetherFunctionRun).toBeTruthy();
             expect(result).toBe(10);
 
             addNumbersTogetherFunctionRun = false;
 
-            result = memorizedAddNumbersTogether(1, 2, 3, 4);
+            result = memoizedAddNumbersTogether(1, 2, 3, 4);
 
             expect(addNumbersTogetherFunctionRun).toBeFalsy();
             expect(result).toBe(10);
         });
 
         it("Remembering a call that has simple objects as the key", function () {
-            var memorizedAddNumbersToObject = addNumbersToObject.memoize(),
-                resultOne = memorizedAddNumbersToObject({}),
-                resultTwo = memorizedAddNumbersToObject({});
+            var memoizedAddNumbersToObject = addNumbersToObject.memoize(),
+                resultOne = memoizedAddNumbersToObject({}),
+                resultTwo = memoizedAddNumbersToObject({});
 
 
             expect(resultOne.num).toEqual(resultTwo.num);
         });
 
         it("Remembering a call that has simple objects with overridden toString", function () {
-            var memorizedAddNumbersToObject = addNumbersToObject.memoize(),
-                resultOne = memorizedAddNumbersToObject({
+            var memoizedAddNumbersToObject = addNumbersToObject.memoize(),
+                resultOne = memoizedAddNumbersToObject({
                     toString: function () {
                         return 'Object One';
                     }
                 }),
-                resultTwo = memorizedAddNumbersToObject({
+                resultTwo = memoizedAddNumbersToObject({
                     toString: function () {
                         return 'Object Two';
                     }
