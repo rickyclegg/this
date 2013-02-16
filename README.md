@@ -38,7 +38,7 @@ As soon as the script has loaded you are ready.
 
 ## Documentation
 
-###[API Documentation](https://github.com/rickyclegg/this) - Coming soon...
+###[API Documentation](http://this.betweenthebraces.com/)
 
 This is a tiny library. But you can find out more about it here.
 
@@ -107,6 +107,8 @@ You must extend after you have defined the constructor.
 Here we add the Person or super class to the [Prototype](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype) Object, which means you have to add all your public methods after extending.
 
 ## Release History
+* 2012/14/2 - v0.1.3 - API update.
+* 2012/14/2 - v0.1.2 - API update.
 * 2012/14/2 - v0.1.1 - Documentation update.
 * 2012/14/2 - v0.1.0 - First release on includes extending.
 
