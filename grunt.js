@@ -3,8 +3,8 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         watch: {
             scripts: {
-                files: ['src/**/*.js', 'src-test/**/*.js', 'docs/this API.js'],
-                tasks: ['lint:beforeconcat'],
+                files: ['src/**/*.js', 'src-test/**/*.js', 'docs/API.js', 'docs/this_docco.css'],
+                tasks: ['lint:beforeconcat', 'docco'],
                 options: {
                     interrupt: true
                 }
@@ -81,8 +81,9 @@ module.exports = function (grunt) {
         },
         docco: {
             debug: {
-                src: ['docs/API.js'],
-                dest: 'docs/docco/'
+                src: 'docs/API.js',
+                dest: 'docs/docco/',
+                css: 'docs/this_docco.css'
             }
         },
         shell: {
