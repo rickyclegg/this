@@ -28,10 +28,10 @@ Will download the this library to your project.
 
 You can also get the code from GitHub.
 
-Once you have got the this_0.1.0.js
+Once you have got the this_0.1.3.js
 
 ```
-<script type="text/javascript" src="this_0.1.0.js">
+<script type="text/javascript" src="this_0.1.3.js">
 ```
 
 As soon as the script has loaded you are ready.
@@ -107,6 +107,7 @@ You must extend after you have defined the constructor.
 Here we add the Person or super class to the [Prototype](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype) Object, which means you have to add all your public methods after extending.
 
 ## Release History
+* 2012/14/2 - v0.1.4 - Updated API, added EventDispatcher but not yet tested.
 * 2012/14/2 - v0.1.3 - API update.
 * 2012/14/2 - v0.1.2 - API update.
 * 2012/14/2 - v0.1.1 - Documentation update.

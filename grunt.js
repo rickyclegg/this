@@ -47,7 +47,7 @@ module.exports = function (grunt) {
         },
         concat: {
             debug: {
-                src: ['<banner>', 'src/function/*.js'],
+                src: ['<banner>', 'src/function/*.js', 'src/events/EventDispatcher.js'],
                 dest: 'build/debug/<%= pkg.name %>_debug_<%= pkg.version %>.js'
             }
         },
