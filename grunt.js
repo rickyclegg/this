@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: ['src/**/*.js', 'src-test/**/*.js', 'docs/API.js', 'docs/this_docco.css'],
-                tasks: ['lint:beforeconcat', 'docco'],
+                tasks: ['lint:beforeconcat'],
                 options: {
                     interrupt: true
                 }
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
         },
         concat: {
             debug: {
-                src: ['<banner>', 'src/function/*.js', 'src/events/EventDispatcher.js'],
+                src: ['<banner>', 'src/array/*.js', 'src/function/*.js', 'src/events/EventDispatcher.js'],
                 dest: 'build/debug/<%= pkg.name %>_debug_<%= pkg.version %>.js'
             }
         },
