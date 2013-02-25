@@ -107,11 +107,12 @@ You must extend after you have defined the constructor.
 Here we add the Person or super class to the [Prototype](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype) Object, which means you have to add all your public methods after extending.
 
 ## Release History
-* 2012/14/2 - v0.1.4 - Updated API, added EventDispatcher but not yet tested.
+* 2012/22/2 - v0.1.5 - Added tests for EventDispatcher. Added Array.indexOf. Updated API.
+* 2012/17/2 - v0.1.4 - Updated API, added EventDispatcher but not yet tested.
 * 2012/14/2 - v0.1.3 - API update.
-* 2012/14/2 - v0.1.2 - API update.
-* 2012/14/2 - v0.1.1 - Documentation update.
-* 2012/14/2 - v0.1.0 - First release on includes extending.
+* 2012/13/2 - v0.1.2 - API update.
+* 2012/12/2 - v0.1.1 - Documentation update.
+* 2012/10/2 - v0.1.0 - First release on includes extending.
 
 ## New Features
 * Simple Event dispatching.
@@ -120,4 +121,4 @@ Let me know if you have any new features that you think would be good. Or any im
 
 ## License
 Copyright (c) 2013 Ricky Clegg  
-Licensed under the APACHE license.
+Licensed under the MIT license.
