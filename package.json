@@ -1,7 +1,7 @@
 {
   "name": "this",
   "description": "A tiny library for writing OO JavaScript. A JavaScript library that tries its best not to be a library. Rules are being broken but this just does not care. This adds functionality to globals already in JavaScript (Often frowned upon). But I'm all about not choosing a big library until the project needs it.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/rickyclegg/this",
   "author": {
     "name": "Ricky Clegg",
@@ -18,17 +18,20 @@
   "licenses": [
     {
       "type": "APACHE",
-      "url": "https://github.com/rickyclegg/this/issues/blob/master/LICENSE-APACHE"
+      "url": "https://github.com/rickyclegg/this/issues/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "grunt.js",
+  "main": "Gruntfile.js",
   "bin": "bin/this",
   "engines": {
     "node": "*"
   },
   "devDependencies": {
-    "grunt": "~0.3.17",
-    "grunt-html": "~0.3.1"
+    "grunt": "~0.4.0",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-uglify": "~0.1.1"
   },
   "keywords": [
     "this",

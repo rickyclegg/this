@@ -9,6 +9,8 @@
 //
 // We're not saying never use [Backbone](http://backbonejs.org/), [Ember](http://emberjs.com/) or [Sencha](http://www.sencha.com/). We are just suggesting deferring the decision until it actually has to be made.
 //
+// We have tried to not repeat other libraries. I have not made any utilities as you can use great libraries like [Underscore](http://underscorejs.org/).
+//
 // What we are preaching is nothing new. I suggest that you go check out [Clean Coders](http://www.cleancoders.com/) by Uncle Bob.
 
 
@@ -94,6 +96,7 @@ var SuperHero = (function () {
 // Working with callbacks you often use a closure to get around loss of scope.
 
 // ####Closure example:
+
 // Account class.
 var Account = (function () {
     function Account() {}
@@ -191,10 +194,120 @@ var memFibRun = fibonacci.memoize(),
     resultTwo = memFibRun(25),
     resultThree = memFibRun(50);
 
+// Events
+// -----------
+
+// this creates a global EventDispatcher class for native style events.
+
+// ###EventDispatcher
+
+var eventDispatcher = new EventDispatcher();
+
+// Normally you will not create new instances of EventDispatcher. The classes main purpose is to be extended to give you modules event based functionality.
+
+var Work = (function () {
+    function Work() {}
+
+    // Adds event functionality to the Work class.
+    Work.extend(EventDispatcher);
+
+    // Adds any public function SuperHero needs.
+    Work.prototype.addEmployee = function (employee) {
+        /* Add an employee */
+        this.dispatchEvent({type: 'added', employee: employee});
+    };
+
+    return Work;
+}());
+//
+//
+
+
+// ###addEventListener
+// Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
+// If you no longer need an event listener, remove it by calling removeEventListener(), or memory problems could result.
+//
+// * param | **eventType: String** | The type of event.
+// * param | **listener: Function** | listener The listener function that processes the event. This function must accept an Event object as its only parameter and should return nothing.
+// * param | **listenerScope: Object** | The scope you want the listener function to be called with.
+// * returns | **Boolean** | Returns true if event is added.
+EventDispatcher.prototype.addEventListener(eventType: String, listener: Function, listenerScope: Object): Boolean
+// ####Example:
+eventDispatcher.addEventListener('complete', function () {}, this);
+//
+//
+
+// ###dispatchEvent
+// Dispatches an event into the event flow.
+// The event target is the EventDispatcher object upon which the dispatchEvent() method is called.
+//
+// * param | **event: Object** | The Event object that is dispatched into the event flow.
+// * returns | **Boolean** | A value of true if the event was successfully dispatched.
+EventDispatcher.prototype.dispatchEvent(event: Object): Boolean
+// ####Example:
+eventDispatcher.dispatchEvent({
+    type: 'added',
+    data: [1, 2, 3]
+});
+//
+//
+
+// ###hasEventListener
+// Checks whether the EventDispatcher object has any listeners registered for a specific type of event.
+//
+// * param | **eventType: String** | The type of event.
+// * returns | **Boolean** | A value of true if the class is managing an event of that type.
+EventDispatcher.prototype.hasEventListener(eventType: String): Boolean
+// ####Example:
+if (!eventDispatcher.hasEventListener('added')) {
+    eventDispatcher.addEventListener('added', function () {}, this);
+}
+//
+//
+
+// ###removeEventListener
+// Removes a listener from the EventDispatcher object. If there is no matching listener registered with the EventDispatcher object, a call to this method has no effect.
+//
+// * param | **eventType: String** | The type of event.
+// * param | **listener: Function** | The listener object to remove.
+// * throws | **TypeError** | The listener specified is not a function.
+EventDispatcher.prototype.removeEventListener(eventType: String, listener: Function)
+// ####Example:
+function addedHandler(event) {
+    /* Some code */
+}
+
+eventDispatcher.removeEventListener('added', addedHandler);
+//
+//
+// **IMPORTANT -
+// Event listeners can easily create memory leaks if you do not clean up your code.
+// Be sure to use removeEventListener once your event is no longer needed.**
+//
+//
+//
+
+// ###Event Objects
+//
+// This can be as simple as a basic object, extend the native JavaScript event or create your own class.
+// It does not mater which you use. The only property your object requires is 'type'.
+//
+//
+
+// ####Example:
+var basicEvent = {
+    type: 'added'
+};
+
+var nativeEvent = new Event('added');
+
+var myApp.events.Event = function (type) {
+    this.type = type;
+};
 
 // License
 // -------
 
 //Copyright (c) 2013 Ricky Clegg
 //
-//Licensed under the APACHE license.
+//Licensed under the MIT license.
