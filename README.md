@@ -1,12 +1,8 @@
 # this
 
-this.js is a tiny library for writing OO JavaScript.
-A JavaScript library that tries its best not to be a library.
-Rules are being broken but this just does not care. This adds functionality to globals already in JavaScript (Often frowned upon). But I'm all about not choosing a big library until the project needs it.
+**this** is a tiny library for writing OO JavaScript.
 
-this.js is all about deferring decisions and writing just what you need, for some hard core true agile TDD.
-
-We're not saying never use [Backbone](http://backbonejs.org/), [Ember](http://emberjs.com/) or [Sencha](http://www.sencha.com/). We are just suggesting deferring the decision until it actually has to be made.
+this makes it easy to write JavaScript classes and use simple object orientated techniques.
 
 What we are preaching is nothing new. I suggest that you go check out [Clean Coders](http://www.cleancoders.com/) by Uncle Bob.
 
@@ -107,6 +103,8 @@ You must extend after you have defined the constructor.
 Here we add the Person or super class to the [Prototype](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype) Object, which means you have to add all your public methods after extending.
 
 ## Release History
+* 2012/25/2 - v0.1.7 - Added Bower ignore list.
+* 2012/25/2 - v0.1.6 - Added component.json to publish to Bower.
 * 2012/25/2 - v0.1.5 - Added tests for EventDispatcher. Added Array.indexOf.
 * 2012/17/2 - v0.1.4 - Updated API, added EventDispatcher but not yet tested.
 * 2012/14/2 - v0.1.3 - API update.

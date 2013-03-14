@@ -1,0 +1,14 @@
+{
+    "name": "this",
+    "version": "0.1.7",
+    "main": "./build/production/this_0.1.6.js",
+    "dependencies": {},
+    "ignore": [
+        "docs/",
+        "node_modules/",
+        "src/",
+        "src-test/",
+        "package.json",
+        "Gruntfile.js"
+    ]
+}
