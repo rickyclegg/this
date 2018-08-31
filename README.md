@@ -6,7 +6,7 @@ this makes it easy to write JavaScript classes and use simple object orientated 
 
 What we are preaching is nothing new. I suggest that you go check out [Clean Coders](http://www.cleancoders.com/) by Uncle Bob.
 
-###Quick Explanation
+### Quick Explanation
 If you are creating a new client side payroll system. You will have simple use cases like 'Pay hourly employee'. At this point how do you know which framework will best suite you?
 
 DON'T make the decision now! Use this to create classes and core code bases and 'plugin' to the rest of the application architecture. Your application is the use cases, not the view.
