@@ -34,11 +34,9 @@ As soon as the script has loaded you are ready.
 
 ## Documentation
 
-###[API Documentation](http://this.betweenthebraces.com/)
+### API Documentation
 
-This is a tiny library. But you can find out more about it here.
-
-###Method Behind The Madness
+### Method Behind The Madness
 
 Now you have this installed you can start writing classes.
 
